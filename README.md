@@ -30,7 +30,7 @@ print(summary)
 
 ## 👤 Author
 
-Developed by [Ponkoj Shill](https://github.com/yourusername)  
+Developed by [Ponkoj Shill](https://github.com/CS-Ponkoj)  
 Email: csponkoj@gmail.com
 
 ## 📝 License
