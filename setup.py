@@ -8,7 +8,7 @@ setup(
     description='Quick EDA utility to summarize unique and missing values in pandas DataFrames.',
     author='Ponkoj Shill',
     author_email='csponkoj@gmail.com',
-    url='https://github.com/yourusername/pandas_eda_check',
+    url='https://github.com/CS-Ponkoj/pandas_eda_check',
     license='MIT',
     classifiers=[
         'Programming Language :: Python :: 3',
