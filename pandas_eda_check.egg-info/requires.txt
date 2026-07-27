@@ -1,6 +1,0 @@
-pandas>=1.5
-
-[dev]
-build>=1
-pytest>=7
-twine>=5
