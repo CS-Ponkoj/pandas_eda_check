@@ -55,9 +55,8 @@ def test_values_present_are_non_missing_counts(sample_df):
 def test_data_types_are_reported(sample_df):
     report = check(sample_df, display=False)
 
-    assert report.loc["name", "Data Type"] == "object"
-    assert report.loc["age", "Data Type"] == "float64"
-    assert report.loc["active", "Data Type"] == "bool"
+    for column in sample_df.columns:
+        assert report.loc[column, "Data Type"] == str(sample_df[column].dtype)
 
 
 def test_include_dtypes_false_removes_data_type(sample_df):

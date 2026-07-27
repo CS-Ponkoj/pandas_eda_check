@@ -93,6 +93,15 @@ def check(
         index=pd.Index(list(data.columns)),
         columns=report_columns,
     )
+    if report.empty:
+        report = report.astype(
+            {
+                "Unique Values": "int64",
+                "Values Present": "int64",
+                "Missing Count": "int64",
+                "Missing %": "float64",
+            }
+        )
 
     if not include_complete:
         report = report.iloc[report["Missing Count"].to_numpy() > 0]
