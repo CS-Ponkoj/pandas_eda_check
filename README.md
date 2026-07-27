@@ -1,38 +1,139 @@
-# pandas_eda_check
+# pandas-eda-check
 
-A lightweight Python utility for quick dataset interpretation using `pandas`.
+`pandas-eda-check` is a lightweight utility for quickly summarizing data types,
+unique values, completeness, and missingness in a pandas DataFrame.
 
-## 🔍 What it does
+## Features
 
-Provides a quick summary of:
-- Unique values per column
-- Missing values (count and %)
-- Total data shape
+- One-row-per-column data quality report
+- Dataset-level missing-data summary
+- Optional filtering to columns with missing values
+- Sorting by missing percentage, missing count, unique count, or data type
+- Report metadata stored in `DataFrame.attrs`
+- Safe handling of empty DataFrames and duplicate column names
 
-Ideal for exploratory data analysis (EDA) and dataset cleaning.
-
-## 📦 Installation
+## Installation
 
 ```bash
-pip install pandas_eda_check
+pip install pandas-eda-check
 ```
 
-## 💻 Usage
+Python 3.9 or newer is required.
+
+## Usage
 
 ```python
-from pandas_eda_check import check
 import pandas as pd
 
-df = pd.read_csv('your_dataset.csv')
-summary = check(df)
-print(summary)
+from pandas_eda_check import check
+
+df = pd.DataFrame(
+    {
+        "name": ["Ada", "Bob", "Bob"],
+        "age": [36, None, 29],
+        "city": ["London", "Paris", None],
+    }
+)
+
+report = check(df)
+print(report)
 ```
 
-## 👤 Author
+Console summary:
 
-Developed by [Ponkoj Shill](https://github.com/CS-Ponkoj)  
-Email: csponkoj@gmail.com
+```text
+Data Shape: (3, 3)
+Total Missing Cells: 2
+Rows With Missing Values: 2
+Overall Missing Percentage: 22.22%
+```
 
-## 📝 License
+Report:
 
-MIT License
+```text
+     Data Type  Unique Values  Values Present  Missing Count  Missing %
+name    object              2               3              0       0.00
+age    float64              2               2              1      33.33
+city    object              2               2              1      33.33
+```
+
+The original DataFrame column names are used as the report index.
+
+## Parameters
+
+```python
+check(
+    data,
+    include_dtypes=True,
+    include_complete=True,
+    sort_by=None,
+    ascending=False,
+    round_digits=2,
+    display=True,
+)
+```
+
+| Parameter | Description |
+| --- | --- |
+| `data` | pandas DataFrame to inspect. |
+| `include_dtypes` | Include the `Data Type` report column. |
+| `include_complete` | Include columns that have no missing values. |
+| `sort_by` | Sort by `missing_pct`, `missing_count`, `unique`, or `dtype`. |
+| `ascending` | Use ascending order when sorting. |
+| `round_digits` | Non-negative number of decimal places for percentages. |
+| `display` | Print the dataset-level summary. |
+
+### Sorting
+
+```python
+check(df, sort_by="missing_pct")
+check(df, sort_by="missing_count")
+check(df, sort_by="unique")
+check(df, sort_by="dtype", ascending=True)
+```
+
+### Columns with missing values only
+
+```python
+missing_columns = check(df, include_complete=False)
+```
+
+### Suppress console output
+
+```python
+report = check(df, display=False)
+```
+
+### Report metadata
+
+```python
+report.attrs["shape"]
+report.attrs["total_missing_cells"]
+report.attrs["rows_with_missing"]
+report.attrs["overall_missing_percent"]
+```
+
+## Development
+
+Install the package and development tools in editable mode:
+
+```bash
+python -m pip install -e ".[dev]"
+```
+
+Run the tests:
+
+```bash
+python -m pytest
+```
+
+Build and validate the distribution:
+
+```bash
+python -m build
+python -m twine check dist/*
+```
+
+## License
+
+MIT License. See [LICENSE](LICENSE).

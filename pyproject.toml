@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pandas-eda-check"
+version = "0.2.0"
+description = "Quick EDA utility to summarize unique and missing values in pandas DataFrames."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Ponkoj Shill", email = "csponkoj@gmail.com" },
+]
+dependencies = [
+    "pandas>=1.5",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+
+[project.optional-dependencies]
+dev = [
+    "build>=1",
+    "pytest>=7",
+    "twine>=5",
+]
+
+[project.urls]
+Repository = "https://github.com/CS-Ponkoj/pandas_eda_check"
+
+[tool.setuptools]
+packages = ["pandas_eda_check"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]

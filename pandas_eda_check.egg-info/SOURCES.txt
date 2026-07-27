@@ -1,9 +1,11 @@
 LICENSE
 README.md
-setup.py
+pyproject.toml
 pandas_eda_check/__init__.py
+pandas_eda_check/core.py
 pandas_eda_check.egg-info/PKG-INFO
 pandas_eda_check.egg-info/SOURCES.txt
 pandas_eda_check.egg-info/dependency_links.txt
 pandas_eda_check.egg-info/requires.txt
 pandas_eda_check.egg-info/top_level.txt
+tests/test_check.py
