@@ -205,4 +205,4 @@ def test_duplicate_column_names_are_handled_by_position():
 
 
 def test_version_is_exposed():
-    assert __version__ == "0.2.0"
+    assert __version__ == "0.3.0"

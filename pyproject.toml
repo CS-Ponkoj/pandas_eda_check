@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pandas-eda-check"
-version = "0.2.0"
+version = "0.3.0"
 description = "Quick EDA utility to summarize unique and missing values in pandas DataFrames."
 readme = "README.md"
 requires-python = ">=3.9"
