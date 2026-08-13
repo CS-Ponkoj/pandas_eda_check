@@ -290,3 +290,11 @@ python -m twine check dist/*
 ## License
 
 MIT License. See [LICENSE](LICENSE).
+
+## Author
+
+**Ponkoj Shill**  
+AI/ML researcher and Ph.D. candidate in Computer Science
+
+- [GitHub](https://github.com/CS-Ponkoj)
+- [Portfolio](https://ponkoj.com)
